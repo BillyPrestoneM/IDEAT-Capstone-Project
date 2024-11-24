@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".startpage.StartedPageActivity"
+    android:background="@drawable/gradient">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imageView2"
+        android:contentDescription="@string/imagelogo"
+        android:layout_width="208dp"
+        android:layout_height="203dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:src="@drawable/logo" />
+
+    <!-- Judul -->
+    <TextView
+        android:id="@+id/textViewjudul"
+        tools:ignore="TextContrastCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/poppinsbold"
+        android:text="@string/getting_healthier"
+        android:textColor="@color/white"
+        android:textSize="32sp" />
+
+    <!-- Subjudul -->
+    <TextView
+        android:id="@+id/textView"
+        tools:ignore="TextContrastCheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewjudul"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/subjudul"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="16sp" />
+
+    <!-- Button -->
+    <Button
+        android:id="@+id/buttongetstarted"
+        android:layout_width="312dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textColor="@color/hijau1"
+        android:backgroundTint="@color/white"
+        android:text="@string/get_started" />
+
+</RelativeLayout>

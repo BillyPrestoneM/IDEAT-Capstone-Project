@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Ideat app</string>
+    <string name="getting_healthier">Getting Healthier</string>
+    <string name="subjudul">With IDEAT you can more easily manage\ncalories in food to maintain a healthy \nlifestyle</string>
+    <string name="get_started">GET STARTED</string>
+    <string name="imagelogo">imageLogo</string>
+    <string name="gambar_sesi_pertama">gambar sesi pertama</string>
+    <string name="welcome">Welcome To IDEAT</string>
+    <string name="create_an_account_or_login_to_start_exploring">create an account or Login to start exploring</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+</resources>

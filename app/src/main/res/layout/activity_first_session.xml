@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".startpage.FirstSessionActivity">
+
+    <ImageView
+        android:id="@+id/gambar2"
+        android:contentDescription="@string/gambar_sesi_pertama"
+        android:layout_width="206dp"
+        android:layout_height="206dp"
+        android:src="@drawable/gambar2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"/>
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinssemibold"
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:layout_below="@id/gambar2"
+        android:layout_marginTop="40dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/createtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsmedium"
+        android:text="@string/create_an_account_or_login_to_start_exploring"
+        android:textColor="@color/black"
+        android:layout_below="@id/welcome"
+        android:layout_centerHorizontal="true"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/buttonlogin"
+        android:layout_width="312dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/createtext"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/hijau1"
+        android:text="@string/login" />
+
+    <Button
+        android:id="@+id/buttonregister"
+        android:layout_width="312dp"
+        android:layout_height="54dp"
+        android:layout_below="@id/buttonlogin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/poppinssemibold"
+        android:textColor="@color/hijau1"
+        android:text="@string/register" />
+
+
+</RelativeLayout>
