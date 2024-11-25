@@ -9,4 +9,16 @@
     <string name="create_an_account_or_login_to_start_exploring">create an account or Login to start exploring</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="gambar_login">gambar login</string>
+    <string name="title_login">Please Enter an Account</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="email_required">Email is required</string>
+    <string name="password_required">Password is required</string>
+    <string name="create_an_account">Create an Account</string>
+    <string name="gambar_register">Gambar Register</string>
+    <string name="name">Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="already_have_an_account">Already have an account?</string>
 </resources>

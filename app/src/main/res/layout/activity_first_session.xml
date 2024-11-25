@@ -58,6 +58,7 @@
         android:layout_below="@id/buttonlogin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:backgroundTint="@color/white"
         android:fontFamily="@font/poppinssemibold"
         android:textColor="@color/hijau1"
         android:text="@string/register" />
