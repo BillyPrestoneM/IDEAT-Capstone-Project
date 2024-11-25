@@ -1,7 +1,6 @@
 package com.example.ideatapp.startpage
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.example.ideatapp.R
 import com.example.ideatapp.databinding.ActivityLoginBinding

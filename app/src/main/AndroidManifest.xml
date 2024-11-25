@@ -18,7 +18,7 @@
             android:name=".startpage.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".login.ui.LoginActivity"
+            android:name=".startpage.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".startpage.FirstSessionActivity"
