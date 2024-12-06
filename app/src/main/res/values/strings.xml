@@ -20,5 +20,24 @@
     <string name="gambar_register">Gambar Register</string>
     <string name="name">Name</string>
     <string name="confirm_password">Confirm Password</string>
+    <string name="login_success">Login Success</string>
+    <string name="login_failed">Login Failed</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="history">History</string>
+    <string name="foto_makanan">foto makanan</string>
+    <string name="title_activity_bot_nav">BotNavActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="selamat_datang">Selamat Datang</string>
+    <string name="hidup_sehat_dengan_menjaga_pola_makan">Hidup Sehat dengan Menjaga Pola Makan</string>
+    <string name="kalori_makanan">kalori makanan</string>
+    <string name="tanggal_scan_makanan">tanggal scan makanan</string>
+    <string name="nama_makanan">Nama Makanan</string>
+    <string name="history_link">history link</string>
+    <string name="scanner">Scanner</string>
+    <string name="setting">Setting</string>
+    <string name="hitung_nilai_kalori">Hitung Nilai Kalori</string>
+    <string name="galeri">galeri</string>
+    <string name="camera">camera</string>
 </resources>

@@ -5,13 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".splashscreen.SplashScreenActivity"
-    android:background="@drawable/gradient">
+    tools:context=".presentation.ui.SplashScreenActivity"
+    android:background="@color/white">
 
     <ImageView
-        android:layout_width="208dp"
-        android:layout_height="203dp"
-        android:src="@drawable/logo"
+        android:layout_width="324dp"
+        android:layout_height="285dp"
+        android:src="@drawable/logo1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
