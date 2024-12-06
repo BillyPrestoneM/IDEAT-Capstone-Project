@@ -1,6 +1,7 @@
 package com.example.ideatapp
 
 import android.app.Application
+import com.example.ideatapp.di.modules.HomeModule
 import com.example.ideatapp.di.modules.dataStoreModule
 import com.example.ideatapp.di.modules.scanModule
 import com.example.ideatapp.di.modules.userModule
@@ -15,7 +16,7 @@ class MyApplication : Application() {
         startKoin {
             androidContext(this@MyApplication)
             androidLogger(Level.ERROR)
-            modules(listOf(dataStoreModule, userModule, scanModule))
+            modules(listOf(dataStoreModule, userModule, scanModule, HomeModule))
         }
     }
 }

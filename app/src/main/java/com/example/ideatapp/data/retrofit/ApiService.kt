@@ -1,11 +1,13 @@
 package com.example.ideatapp.data.retrofit
 import com.example.ideatapp.data.model.LoginResponse
 import com.example.ideatapp.data.model.RegisterResponse
+import com.example.ideatapp.data.model.RiwayatResponse
 import com.example.ideatapp.data.model.ScanResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
@@ -23,4 +25,7 @@ interface ApiService {
     @Multipart
     @POST("scan")
     suspend fun scanCall(@Part file: MultipartBody.Part): Response<ScanResponse>
+
+    @GET("historyScan")
+    suspend fun historyCall(): RiwayatResponse
 }
