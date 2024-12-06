@@ -40,4 +40,7 @@
     <string name="hitung_nilai_kalori">Hitung Nilai Kalori</string>
     <string name="galeri">galeri</string>
     <string name="camera">camera</string>
+    <string name="jumlah_kalori">Jumlah Kalori</string>
+    <string name="tanggal_history">Tanggal History</string>
+    <string name="nama_makanan_hasil_scan">Nama Makanan Hasil Scan</string>
 </resources>

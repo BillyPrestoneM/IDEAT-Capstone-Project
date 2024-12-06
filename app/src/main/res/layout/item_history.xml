@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="8dp"
+    android:id="@+id/history_detail_card"
     app:cardElevation="4dp">
 
     <LinearLayout

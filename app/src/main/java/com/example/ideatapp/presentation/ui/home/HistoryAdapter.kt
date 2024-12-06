@@ -1,5 +1,7 @@
 package com.example.ideatapp.presentation.ui.home
 
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -8,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ideatapp.data.model.DataItem
 import com.example.ideatapp.databinding.ItemHistoryBinding
+import com.example.ideatapp.presentation.ui.DetailHistoryActivity
 
 class HistoryAdapter : ListAdapter<DataItem, HistoryAdapter.HistoryViewHolder>(DIFF_CALLBACK) {
 
@@ -37,6 +40,13 @@ class HistoryAdapter : ListAdapter<DataItem, HistoryAdapter.HistoryViewHolder>(D
                 Glide.with(root.context)
                     .load(dataItem.image)
                     .into(imageFood)
+
+                historyDetailCard.setOnClickListener {
+                    Log.d("HistoryAdapter", "Clicked on history with ID: ${dataItem.idHistory}")
+                    val intent = Intent(itemView.context, DetailHistoryActivity::class.java)
+                    intent.putExtra("STORY_ID", dataItem.idHistory)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

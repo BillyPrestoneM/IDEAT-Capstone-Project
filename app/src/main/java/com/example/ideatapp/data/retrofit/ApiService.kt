@@ -1,4 +1,5 @@
 package com.example.ideatapp.data.retrofit
+import com.example.ideatapp.data.model.DetailRiwayatResponse
 import com.example.ideatapp.data.model.LoginResponse
 import com.example.ideatapp.data.model.RegisterResponse
 import com.example.ideatapp.data.model.RiwayatResponse
@@ -11,6 +12,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -28,4 +30,7 @@ interface ApiService {
 
     @GET("historyScan")
     suspend fun historyCall(): RiwayatResponse
+
+    @GET("historyScan/{idHistory}")
+    suspend fun detailCall(@Path("idHistory") idHistory: String): Response<DetailRiwayatResponse>
 }
