@@ -2,10 +2,10 @@ package com.example.ideatapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class RiwayatResponse(
+data class HistoryResponse(
 
 	@field:SerializedName("data")
-	val data: List<DataItem>? = emptyList(),
+	val data: List<DataItem>? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null,
@@ -24,9 +24,6 @@ data class DataItem(
 
 	@field:SerializedName("id_history")
 	val idHistory: String? = null,
-
-	@field:SerializedName("tanggal")
-	val tanggal: String? = null,
 
 	@field:SerializedName("makanan")
 	val makanan: String? = null

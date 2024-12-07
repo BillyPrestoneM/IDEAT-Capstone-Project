@@ -1,13 +1,13 @@
 package com.example.ideatapp.data.repository
 
-import com.example.ideatapp.data.model.DetailRiwayatResponse
+import com.example.ideatapp.data.model.DetailResponse
 import com.example.ideatapp.data.retrofit.ApiService
 import com.example.ideatapp.di.utils.ResultUtil
 import com.example.ideatapp.domain.repository.DetailRepository
 import com.example.ideatapp.domain.repository.TokenRepository
 
 class DetailRepositoryImpl(private val apiService: ApiService, private val tokenRepository: TokenRepository) : DetailRepository {
-    override suspend fun detailHistory(idHistory: String): ResultUtil<DetailRiwayatResponse> {
+    override suspend fun detailHistory(idHistory: String): ResultUtil<DetailResponse> {
         return try {
             val token = tokenRepository.getToken()
             if (token==null) {

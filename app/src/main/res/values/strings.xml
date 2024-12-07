@@ -43,4 +43,7 @@
     <string name="jumlah_kalori">Jumlah Kalori</string>
     <string name="tanggal_history">Tanggal History</string>
     <string name="nama_makanan_hasil_scan">Nama Makanan Hasil Scan</string>
+    <string name="waktu_riwayat_scan">waktu riwayat scan</string>
+    <string name="icon_edit_profile">Icon Edit Profile</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

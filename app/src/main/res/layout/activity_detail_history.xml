@@ -31,6 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/nama_makanan_hasil_scan"
+            android:layout_marginLeft="10dp"
             android:textSize="24sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"/>
@@ -39,7 +40,17 @@
             android:id="@+id/tvKaloriHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="@string/jumlah_kalori"
+            android:textSize="16sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:id="@+id/tvwaktuHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="@string/waktu_riwayat_scan"
             android:textSize="16sp"
             android:layout_marginTop="4dp"/>
 
@@ -47,6 +58,7 @@
             android:id="@+id/tvtanggalHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:text="@string/tanggal_history"
             android:textSize="16sp"
             android:layout_marginTop="4dp"/>

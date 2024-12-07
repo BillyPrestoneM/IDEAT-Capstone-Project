@@ -1,8 +1,8 @@
 package com.example.ideatapp.data.retrofit
-import com.example.ideatapp.data.model.DetailRiwayatResponse
+import com.example.ideatapp.data.model.DetailResponse
+import com.example.ideatapp.data.model.HistoryResponse
 import com.example.ideatapp.data.model.LoginResponse
 import com.example.ideatapp.data.model.RegisterResponse
-import com.example.ideatapp.data.model.RiwayatResponse
 import com.example.ideatapp.data.model.ScanResponse
 import okhttp3.MultipartBody
 import retrofit2.Response
@@ -29,8 +29,8 @@ interface ApiService {
     suspend fun scanCall(@Part file: MultipartBody.Part): Response<ScanResponse>
 
     @GET("historyScan")
-    suspend fun historyCall(): RiwayatResponse
+    suspend fun historyCall(): HistoryResponse
 
     @GET("historyScan/{idHistory}")
-    suspend fun detailCall(@Path("idHistory") idHistory: String): Response<DetailRiwayatResponse>
+    suspend fun detailCall(@Path("idHistory") idHistory: String): Response<DetailResponse>
 }

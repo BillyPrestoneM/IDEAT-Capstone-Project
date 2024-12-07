@@ -2,7 +2,7 @@ package com.example.ideatapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class DetailRiwayatResponse(
+data class DetailResponse(
 
 	@field:SerializedName("data")
 	val data: DataDetail? = null,
@@ -21,6 +21,9 @@ data class DataDetail(
 
 	@field:SerializedName("image")
 	val image: String? = null,
+
+	@field:SerializedName("jam")
+	val jam: String? = null,
 
 	@field:SerializedName("id_history")
 	val idHistory: String? = null,

@@ -8,7 +8,6 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.ideatapp.databinding.ActivityDetailHistoryBinding
 import com.example.ideatapp.di.utils.ResultUtil
@@ -22,6 +21,7 @@ class DetailHistoryActivity : AppCompatActivity() {
     private lateinit var tvHistoryName: TextView
     private lateinit var tvKaloriHistory: TextView
     private lateinit var tvtanggalHistory: TextView
+    private lateinit var tvwaktuHistory: TextView
     private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +32,7 @@ class DetailHistoryActivity : AppCompatActivity() {
         ivHistoryImage = binding.ivHistoryImage
         tvHistoryName = binding.tvHistoryName
         tvKaloriHistory = binding.tvKaloriHistory
+        tvwaktuHistory = binding.tvwaktuHistory
         tvtanggalHistory = binding.tvtanggalHistory
         progressBar = binding.progressBar
 
@@ -51,6 +52,7 @@ class DetailHistoryActivity : AppCompatActivity() {
                     result.data.data?.let { data ->
                         tvHistoryName.text = data.makanan ?: "Nama Tidak tersedia"
                         tvKaloriHistory.text = data.kalori ?: "Kalori Tidak tersedia"
+                        tvwaktuHistory.text = data.jam ?: "Waktu Tidak tersedia"
                         tvtanggalHistory.text = data.tanggal ?: "Tanggal Tidak tersedia"
                         Glide.with(this)
                             .load(data.image)

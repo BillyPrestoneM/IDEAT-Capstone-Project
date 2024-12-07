@@ -35,7 +35,6 @@ class HistoryAdapter : ListAdapter<DataItem, HistoryAdapter.HistoryViewHolder>(D
             with(binding) {
                 textFoodName.text = dataItem.makanan
                 textFoodCalories.text = dataItem.kalori.toString()
-                textFoodDate.text = dataItem.tanggal
 
                 Glide.with(root.context)
                     .load(dataItem.image)
