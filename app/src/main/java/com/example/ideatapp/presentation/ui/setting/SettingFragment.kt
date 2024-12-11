@@ -17,6 +17,7 @@ import com.example.ideatapp.presentation.viewmodel.AuthViewModelImpl
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class SettingFragment : Fragment() {
 
     private var _binding: FragmentSettingBinding? = null
@@ -28,23 +29,23 @@ class SettingFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         lifecycleScope.launch {
             authViewModel.userName.collect { name ->
-                binding.userName.text = name
+                binding.userName.text = name ?: "No Name"
                 Log.d("SettingFragment", "Username: $name")
             }
         }
 
         lifecycleScope.launch {
             authViewModel.userEmail.collect { email ->
-                binding.userEmail.text = email
+                binding.userEmail.text = email ?: "No Email"
                 Log.d("SettingFragment", "Email: $email")
             }
         }
+
 
         fetchUserData()
 

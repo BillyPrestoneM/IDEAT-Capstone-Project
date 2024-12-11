@@ -1,5 +1,6 @@
 package com.example.ideatapp.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ideatapp.data.model.RegisterResponse
@@ -40,6 +41,7 @@ class AuthViewModelImpl(
     override suspend fun login(email: String, password: String) {
         loginUseCase(email, password).collect { result ->
             _user.value = result
+
         }
     }
 
@@ -52,6 +54,7 @@ class AuthViewModelImpl(
     override suspend fun fetchUserName(): String {
         getUserNameUseCase().collect { result ->
             _userName.value = result
+            Log.d("AuthViewModel", "Username fetched: ${_userName.value}")
         }
         return userName.value ?: ""
     }
@@ -59,6 +62,7 @@ class AuthViewModelImpl(
     suspend fun fetchUserEmail() {
         getEmailUseCase().collect { result ->
             _userEmail.value = result
+            Log.d("AuthViewModel", "Email fetched: ${_userEmail.value}")
         }
     }
 

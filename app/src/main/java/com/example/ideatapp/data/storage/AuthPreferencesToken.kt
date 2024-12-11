@@ -1,5 +1,6 @@
 package com.example.ideatapp.data.storage
 
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -23,6 +24,7 @@ class AuthPreferencesToken(private val dataStore: DataStore<Preferences>) : Toke
             it[AUTH_NAME_KEY] = name
             it[AUTH_EMAIL_KEY] = email
         }
+        Log.d("AuthPreferencesToken", "Token saved: $token, Nama: $name, Email: $email")
         println("Token saved: $token, Nama: $name, Email: $email")
     }
 

@@ -5,14 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.ideatapp.R
 import com.example.ideatapp.data.storage.AuthPreferencesToken
 import com.example.ideatapp.databinding.FragmentHomeBinding
 import com.example.ideatapp.di.utils.ResultUtil
 import com.example.ideatapp.presentation.ui.LoginActivity
+import com.example.ideatapp.presentation.ui.history.RiwayatActivity
 import com.example.ideatapp.presentation.viewmodel.HomeViewModel
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
@@ -38,6 +41,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val rotateAnimation = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_animation)
+
+
+        binding.imageView.startAnimation(rotateAnimation)
+
         historyAdapter = HistoryAdapter()
         binding.recyclerViewHistory.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerViewHistory.adapter = historyAdapter
@@ -46,6 +54,8 @@ class HomeFragment : Fragment() {
         checkAuthentication()
 
         binding.fabHistory.setOnClickListener {
+            val intent = Intent(requireContext(), RiwayatActivity::class.java)
+            startActivity(intent)
         }
     }
 

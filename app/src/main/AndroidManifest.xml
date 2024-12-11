@@ -22,6 +22,9 @@
         android:theme="@style/Theme.IdeatApp"
         tools:targetApi="31">
         <activity
+            android:name=".presentation.ui.history.RiwayatActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.PasswordActivity"
             android:exported="false"
             android:theme="@style/Theme.IdeatApp" />
@@ -32,18 +35,12 @@
             android:name=".presentation.ui.DataProfileActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.ProfileActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.ui.DetailHistoryActivity"
             android:exported="false" />
         <activity
             android:name=".BotNavActivity"
             android:exported="false"
             android:label="@string/title_activity_bot_nav" />
-        <activity
-            android:name=".presentation.ui.HistoryActivity"
-            android:exported="false" />
         <activity
             android:name=".presentation.ui.RegisterActivity"
             android:exported="false" />

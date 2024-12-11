@@ -6,12 +6,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.ui.SplashScreenActivity"
-    android:background="@color/white">
+    android:background="@color/hijau1">
 
     <ImageView
-        android:layout_width="324dp"
+        android:layout_width="224dp"
         android:layout_height="285dp"
-        android:src="@drawable/logo1"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

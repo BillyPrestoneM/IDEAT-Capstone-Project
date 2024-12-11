@@ -72,6 +72,12 @@ class LoginActivity : AppCompatActivity() {
                     is ResultUtil.Success -> {
                         loginButton.visibility = View.VISIBLE
                         progressBar.visibility = View.GONE
+                        val token = result.data?.firstOrNull()?.registerData?.token
+                        val name = result.data?.firstOrNull()?.registerData?.nama
+                        val email = binding.emailInputLayout.editText?.text.toString().trim()
+                        token?.let {
+                            authViewModel.saveToken(it, name ?: "", email)
+                        }
                         val intent = Intent(this@LoginActivity, BotNavActivity::class.java)
                         startActivity(intent)
                         finish()

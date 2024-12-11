@@ -53,7 +53,9 @@
         android:layout_margin="16dp"
         android:src="@drawable/download"
         android:contentDescription="@string/history_link"
+        android:backgroundTint="@color/hijau1"
         app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <ProgressBar
@@ -95,7 +97,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
-            <!-- RecyclerView -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_history"
                 android:background="@color/white"
