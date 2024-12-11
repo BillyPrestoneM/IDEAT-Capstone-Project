@@ -2,13 +2,10 @@ package com.example.ideatapp.presentation.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.example.ideatapp.BotNavActivity
 import com.example.ideatapp.databinding.ActivityLoginBinding
 import com.example.ideatapp.di.utils.ResultUtil
@@ -28,17 +25,6 @@ class LoginActivity : AppCompatActivity() {
         setupListeners()
         observeViewModel()
 
-
-        authViewModel.fetchToken()
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authViewModel.token.collect { token ->
-                    if (token != null) {
-                        navigateHomeMain()
-                    }
-                }
-            }
-        }
     }
 
     private fun setupListeners() {
@@ -76,48 +62,30 @@ class LoginActivity : AppCompatActivity() {
         val progressBar = binding.progressBar
 
         lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                authViewModel.user.collect { result ->
-                    when (result) {
-                        is ResultUtil.Loading -> {
-                            loginButton.isEnabled = false
-                            progressBar.visibility = View.VISIBLE
-                        }
-
-                        is ResultUtil.Error -> {
-                            loginButton.isEnabled = true
-                            progressBar.visibility = View.GONE
-                            Toast.makeText(this@LoginActivity, result.message, Toast.LENGTH_SHORT).show()
-                        }
-
-                        is ResultUtil.Success -> {
-                            loginButton.isEnabled = true
-                            progressBar.visibility = View.GONE
-                            Log.d("Login", "Login success")
-
-                            authViewModel.fetchToken()
-                            authViewModel.token.collect { token ->
-                                if (!token.isNullOrEmpty()) {
-                                    Log.d("Login", "Token found: $token")
-                                    navigateHomeMain()
-                                }
-                            }
-                        }
-
-                        else -> {
-                            loginButton.isEnabled = true
-                            progressBar.visibility = View.GONE
-                        }
+            authViewModel.user.collect { result ->
+                when (result) {
+                    is ResultUtil.Loading -> {
+                        loginButton.visibility = View.GONE
+                        progressBar.visibility = View.VISIBLE
                     }
+
+                    is ResultUtil.Success -> {
+                        loginButton.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
+                        val intent = Intent(this@LoginActivity, BotNavActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                    is ResultUtil.Error -> {
+                        loginButton.visibility = View.VISIBLE
+                        progressBar.visibility = View.GONE
+                        Toast.makeText(this@LoginActivity, result.message, Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                    else -> {}
                 }
             }
-        }
-    }
-
-    private fun navigateHomeMain() {
-        Intent(this, BotNavActivity::class.java).also {
-            startActivity(it)
-            finish()
         }
     }
 }

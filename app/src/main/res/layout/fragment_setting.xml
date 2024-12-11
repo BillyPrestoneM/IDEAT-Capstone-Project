@@ -140,7 +140,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/buttonlogin"
+        android:id="@+id/buttonlogout"
         android:layout_width="312dp"
         android:layout_height="54dp"
         android:layout_centerHorizontal="true"

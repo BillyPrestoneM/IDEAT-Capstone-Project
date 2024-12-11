@@ -5,7 +5,9 @@ import com.example.ideatapp.data.retrofit.ApiConfig
 import com.example.ideatapp.data.retrofit.ApiService
 import com.example.ideatapp.data.storage.AuthPreferencesToken
 import com.example.ideatapp.domain.repository.AuthRepository
+import com.example.ideatapp.domain.usecase.AuthClearSessionUseCase
 import com.example.ideatapp.domain.usecase.AuthSaveTokenUseCase
+import com.example.ideatapp.domain.usecase.GetEmailUseCase
 import com.example.ideatapp.domain.usecase.GetTokenUseCase
 import com.example.ideatapp.domain.usecase.GetUserNameUseCase
 import com.example.ideatapp.domain.usecase.LoginUseCase
@@ -23,6 +25,8 @@ val userModule = module {
     single { AuthSaveTokenUseCase(get()) }
     single { RegisterUseCase(get()) }
     single { GetUserNameUseCase(get()) }
+    single { AuthClearSessionUseCase(get()) }
+    single { GetEmailUseCase(get()) }
 
-    viewModel{ AuthViewModelImpl(get(), get(), get(), get(), get()) }
+    viewModel{ AuthViewModelImpl(get(), get(), get(), get(), get(), get(), get()) }
 }
