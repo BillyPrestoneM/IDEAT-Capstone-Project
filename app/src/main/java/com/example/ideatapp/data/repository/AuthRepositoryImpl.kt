@@ -2,7 +2,6 @@ package com.example.ideatapp.data.repository
 
 import com.example.ideatapp.di.utils.ResultUtil
 import android.util.Log
-import com.example.ideatapp.data.model.LoginData
 import com.example.ideatapp.data.model.RegisterResponse
 import com.example.ideatapp.data.retrofit.ApiService
 import com.example.ideatapp.domain.repository.AuthRepository

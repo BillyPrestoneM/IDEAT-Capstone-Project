@@ -1,13 +1,16 @@
 package com.example.ideatapp.presentation.ui.setting
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.ideatapp.databinding.FragmentSettingBinding
+import com.example.ideatapp.presentation.ui.DataProfileActivity
+import com.example.ideatapp.presentation.ui.EditProfileActivity
+import com.example.ideatapp.presentation.ui.PasswordActivity
 
 class SettingFragment : Fragment() {
 
@@ -27,9 +30,19 @@ class SettingFragment : Fragment() {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        binding.dataprofile.setOnClickListener {
+            val intent = Intent(context, DataProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.editprofile.setOnClickListener {
+            val intent = Intent(context, EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.keamananakun.setOnClickListener {
+            val intent = Intent(context, PasswordActivity::class.java)
+            startActivity(intent)
         }
         return root
     }

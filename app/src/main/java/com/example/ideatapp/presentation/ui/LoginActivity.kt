@@ -87,21 +87,19 @@ class LoginActivity : AppCompatActivity() {
                         is ResultUtil.Error -> {
                             loginButton.isEnabled = true
                             progressBar.visibility = View.GONE
-                            Toast.makeText(this@LoginActivity, result.message, Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(this@LoginActivity, result.message, Toast.LENGTH_SHORT).show()
                         }
 
                         is ResultUtil.Success -> {
                             loginButton.isEnabled = true
                             progressBar.visibility = View.GONE
-                            lifecycleScope.launch {
-                                repeatOnLifecycle(Lifecycle.State.STARTED) {
-                                    authViewModel.token.collect { token ->
-                                        if (token != null) {
-                                            Log.d("LoginActivity", "Token berhasil disimpan: $token")
-                                            navigateHomeMain()
-                                        }
-                                    }
+                            Log.d("Login", "Login success")
+
+                            authViewModel.fetchToken()
+                            authViewModel.token.collect { token ->
+                                if (!token.isNullOrEmpty()) {
+                                    Log.d("Login", "Token found: $token")
+                                    navigateHomeMain()
                                 }
                             }
                         }
@@ -115,6 +113,7 @@ class LoginActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun navigateHomeMain() {
         Intent(this, BotNavActivity::class.java).also {
             startActivity(it)

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/data_profile"
+            android:layout_gravity="center"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Nama -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nama"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/namaEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/nama_pengguna"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Email -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/emailEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/email"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Jenis Kelamin -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/jenis_kelamin"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/jenisKelaminEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/jenis_kelamin"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tanggal Lahir -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tanggal_lahir"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/tanggalLahirEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/tanggal_lahir"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Berat Badan -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/berat_badan"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/beratBadanEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/berat_badan"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Tinggi Badan -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tinggi_badan"
+            android:textColor="@color/black"
+            android:layout_marginBottom="4dp" />
+
+        <EditText
+            android:id="@+id/tinggiBadanEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/grey"
+            android:hint="@string/tinggi_badan"
+            android:focusable="false"
+            android:padding="8dp"
+            android:paddingVertical="16dp"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Button -->
+        <Button
+            android:id="@+id/editProfileButton"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="8dp"
+            android:backgroundTint="@color/hijau1"
+            android:text="@string/edit_profile"
+            android:textColor="@color/white" />
+
+        <!-- ProgressBar -->
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</ScrollView>
