@@ -90,6 +90,7 @@ class ScannerFragment : Fragment() {
                     showToast("Scan berhasil: ${result.data.message}")
                     val intent = Intent(requireContext(), RiwayatActivity::class.java)
                     startActivity(intent)
+                    requireActivity().finish()
                 }
                 is ResultUtil.Error -> {
                     binding.progressIndicator.visibility = View.GONE

@@ -15,17 +15,15 @@ class AuthPreferencesToken(private val dataStore: DataStore<Preferences>) : Toke
     companion object {
         private val AUTH_TOKEN_KEY = stringPreferencesKey("auth_token")
         private val AUTH_NAME_KEY = stringPreferencesKey("auth_name")
-        private val AUTH_EMAIL_KEY = stringPreferencesKey("auth_email")
     }
 
-    override suspend fun saveAuthToken(token: String, name: String, email: String) {
+    override suspend fun saveAuthToken(token: String, name: String) {
         dataStore.edit {
             it[AUTH_TOKEN_KEY] = token
             it[AUTH_NAME_KEY] = name
-            it[AUTH_EMAIL_KEY] = email
         }
-        Log.d("AuthPreferencesToken", "Token saved: $token, Nama: $name, Email: $email")
-        println("Token saved: $token, Nama: $name, Email: $email")
+        Log.d("AuthPreferencesToken", "Token saved: $token, Nama: $name")
+        println("Token saved: $token, Nama: $name")
     }
 
     override suspend fun getToken():String? {
@@ -37,12 +35,6 @@ class AuthPreferencesToken(private val dataStore: DataStore<Preferences>) : Toke
     override suspend fun getName(): Flow<String?> {
         return dataStore.data.map {
             it[AUTH_NAME_KEY]
-        }
-    }
-
-    override suspend fun getEmail(): Flow<String?> {
-        return dataStore.data.map {
-            it[AUTH_EMAIL_KEY]
         }
     }
 

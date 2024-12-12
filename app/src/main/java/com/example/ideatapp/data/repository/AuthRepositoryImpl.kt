@@ -47,16 +47,12 @@ class AuthRepositoryImpl(
         return tokenRepository.getName()
     }
 
-    override suspend fun saveAuthToken(token: String, name: String, email: String) {
-        tokenRepository.saveAuthToken(token, name, email)
+    override suspend fun saveAuthToken(token: String, name: String) {
+        tokenRepository.saveAuthToken(token, name)
     }
 
     override suspend fun clearSession() {
         tokenRepository.clearSession()
-    }
-
-    override suspend fun getEmail(): Flow<String?> {
-        return tokenRepository.getEmail()
     }
 
 
@@ -74,7 +70,7 @@ class AuthRepositoryImpl(
                         emit(ResultUtil.Error("Login Failed"))
                     }
                     data?.token?.let {
-                        tokenRepository.saveAuthToken(it, data.toString(), email)
+                        tokenRepository.saveAuthToken(it, data.toString())
                     } ?: run {
                         emit(ResultUtil.Error("Login Failed"))
                         return@flow

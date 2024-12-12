@@ -9,21 +9,24 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import com.example.ideatapp.databinding.FragmentSettingBinding
+import com.example.ideatapp.di.utils.ResultUtil
+import com.example.ideatapp.domain.repository.TokenRepository
 import com.example.ideatapp.presentation.ui.DataProfileActivity
 import com.example.ideatapp.presentation.ui.EditProfileActivity
 import com.example.ideatapp.presentation.ui.LoginActivity
 import com.example.ideatapp.presentation.ui.PasswordActivity
-import com.example.ideatapp.presentation.viewmodel.AuthViewModelImpl
+import com.example.ideatapp.presentation.viewmodel.ProfileViewModelImpl
 import kotlinx.coroutines.launch
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
-
 
 class SettingFragment : Fragment() {
 
     private var _binding: FragmentSettingBinding? = null
     private val binding get() = _binding!!
 
-    private val authViewModel: AuthViewModelImpl by viewModel()
+    private val profileViewModel: ProfileViewModelImpl by viewModel()
+    private val tokenRepository: TokenRepository by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,22 +35,16 @@ class SettingFragment : Fragment() {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        lifecycleScope.launch {
-            authViewModel.userName.collect { name ->
-                binding.userName.text = name ?: "No Name"
-                Log.d("SettingFragment", "Username: $name")
-            }
-        }
+        profileViewModel.fetchProfile(
+            nama = "Nama",
+            email = "Email",
+            jenisKelamin = "JenisKelamin",
+            tanggalLahir = "TanggalLahir",
+            beratBadan = 70,
+            tinggiBadan = 170
+        )
 
-        lifecycleScope.launch {
-            authViewModel.userEmail.collect { email ->
-                binding.userEmail.text = email ?: "No Email"
-                Log.d("SettingFragment", "Email: $email")
-            }
-        }
-
-
-        fetchUserData()
+        observeProfile()
 
         binding.dataprofile.setOnClickListener {
             val intent = Intent(context, DataProfileActivity::class.java)
@@ -65,7 +62,9 @@ class SettingFragment : Fragment() {
         }
 
         binding.buttonlogout.setOnClickListener {
-            authViewModel.clearSession()
+            lifecycleScope.launch {
+                tokenRepository.clearSession()
+            }
             val intent = Intent(context, LoginActivity::class.java)
             startActivity(intent)
             activity?.finish()
@@ -74,10 +73,26 @@ class SettingFragment : Fragment() {
         return root
     }
 
-    private fun fetchUserData() {
+    private fun observeProfile() {
         lifecycleScope.launch {
-            authViewModel.fetchUserName()
-            authViewModel.fetchUserEmail()
+            profileViewModel.profileResult.observe(viewLifecycleOwner) { result ->
+                Log.d("SettingFragment", "Observed Result: $result")
+                when (result) {
+                    is ResultUtil.Success -> {
+                        val profile = result.data.firstOrNull()
+                        Log.d("SettingFragment", "Profile Data: $profile")
+                        binding.userName.text = profile?.data?.nama ?: "No Name"
+                        binding.userEmail.text = profile?.data?.email ?: "No Email"
+                    }
+                    is ResultUtil.Error -> {
+                        Log.e("SettingFragment", "Error: ${result.message}")
+                    }
+                    ResultUtil.Loading -> {
+                        binding.userName.text = "Loading..."
+                        binding.userEmail.text = "Loading..."
+                    }
+                }
+            }
         }
     }
 

@@ -7,7 +7,6 @@ import com.example.ideatapp.data.model.RegisterResponse
 import com.example.ideatapp.di.utils.ResultUtil
 import com.example.ideatapp.domain.usecase.AuthClearSessionUseCase
 import com.example.ideatapp.domain.usecase.AuthSaveTokenUseCase
-import com.example.ideatapp.domain.usecase.GetEmailUseCase
 import com.example.ideatapp.domain.usecase.GetTokenUseCase
 import com.example.ideatapp.domain.usecase.GetUserNameUseCase
 import com.example.ideatapp.domain.usecase.LoginUseCase
@@ -21,7 +20,6 @@ class AuthViewModelImpl(
     private val registerUseCase: RegisterUseCase,
     private val getUserNameUseCase: GetUserNameUseCase,
     private val getTokenUseCase: GetTokenUseCase,
-    private val getEmailUseCase: GetEmailUseCase,
     private val authSaveTokenUseCase: AuthSaveTokenUseCase,
     private val authClearSessionUseCase: AuthClearSessionUseCase
 ) : AuthViewModel, ViewModel() {
@@ -59,22 +57,15 @@ class AuthViewModelImpl(
         return userName.value ?: ""
     }
 
-    suspend fun fetchUserEmail() {
-        getEmailUseCase().collect { result ->
-            _userEmail.value = result
-            Log.d("AuthViewModel", "Email fetched: ${_userEmail.value}")
-        }
-    }
-
     fun fetchToken() {
         viewModelScope.launch {
             _token.value = getTokenUseCase()
         }
     }
 
-    fun saveToken(token: String, name: String, email: String) {
+    fun saveToken(token: String, name: String) {
         viewModelScope.launch {
-            authSaveTokenUseCase(token, name, email)
+            authSaveTokenUseCase(token, name)
         }
     }
 
