@@ -1,5 +1,6 @@
 package com.example.ideatapp.data.retrofit
 
+import com.example.ideatapp.BuildConfig
 import com.example.ideatapp.data.storage.AuthPreferencesToken
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -15,6 +16,7 @@ class ApiConfig {
                 HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
             val authPreferences: AuthPreferencesToken = getKoin().get()
             val authInterceptor = AuthInterceptor(authPreferences)
+            val baseUrlApi = BuildConfig.BASE_URL
             val client = OkHttpClient.Builder()
                 .addInterceptor(loggingInterceptor)
                 .addInterceptor(authInterceptor)
@@ -23,7 +25,7 @@ class ApiConfig {
                 .setLenient()
                 .create()
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://ideat-api.janggarfals.xyz/")
+                .baseUrl(baseUrlApi)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(client)
                 .build()
