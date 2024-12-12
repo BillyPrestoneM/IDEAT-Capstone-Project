@@ -34,6 +34,7 @@ class RegisterActivity : AppCompatActivity() {
         val passwordInputLayout = binding.passwordInputLayout
         val confirmInputLayout = binding.confirmInputLayout
         val registerButton = binding.loginButton
+        val loginTextIntent = binding.loginTextIntent
 
         registerButton.setOnClickListener {
             val name = nameInputLayout.editText?.text.toString().trim()
@@ -68,6 +69,11 @@ class RegisterActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        loginTextIntent.setOnClickListener {
+            val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

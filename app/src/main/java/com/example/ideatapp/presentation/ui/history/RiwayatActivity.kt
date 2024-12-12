@@ -31,6 +31,7 @@ class RiwayatActivity : AppCompatActivity() {
         setupRecyclerView()
         observeViewModel()
         checkAuthentication()
+
     }
 
     private fun setupRecyclerView() {

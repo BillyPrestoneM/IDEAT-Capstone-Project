@@ -1,5 +1,6 @@
 package com.example.ideatapp.presentation.ui.scanner
 
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,8 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.example.ideatapp.databinding.FragmentScannerBinding
+import com.example.ideatapp.di.utils.ResultUtil
+import com.example.ideatapp.presentation.ui.history.RiwayatActivity
 import com.example.ideatapp.presentation.viewmodel.ScannerViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -54,61 +57,52 @@ class ScannerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupViewModelObservers()
+        setClickListeners()
+        observeViewModel()
+    }
 
+    private fun setClickListeners() {
         binding.galleryButton.setOnClickListener {
-            startGallery()
+            launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
         }
 
         binding.cameraButton.setOnClickListener {
-            startCamera()
+            currentImageUri = getImageUri(requireContext())
+            launcherIntentCamera.launch(currentImageUri!!)
         }
 
         binding.uploadButton.setOnClickListener {
-            uploadImage()
+            currentImageUri?.let { uri ->
+                val imageFile = uriToFile(uri, requireContext()).reduceFileImage()
+                scanViewModel.uploadImage(imageFile)
+            } ?: Toast.makeText(requireContext(), "Pilih atau ambil gambar terlebih dahulu", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun startGallery() {
-        launcherGallery.launch(PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
-    }
-
-    private fun startCamera() {
-        currentImageUri = getImageUri(requireContext())
-        launcherIntentCamera.launch(currentImageUri!!)
+    private fun observeViewModel() {
+        scanViewModel.scanResult.observe(viewLifecycleOwner) { result ->
+            when (result) {
+                is ResultUtil.Loading -> {
+                    binding.progressIndicator.visibility = View.VISIBLE
+                }
+                is ResultUtil.Success -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    showToast("Scan berhasil: ${result.data.message}")
+                    val intent = Intent(requireContext(), RiwayatActivity::class.java)
+                    startActivity(intent)
+                }
+                is ResultUtil.Error -> {
+                    binding.progressIndicator.visibility = View.GONE
+                    showToast("Error: ${result.message}")
+                }
+            }
+        }
     }
 
     private fun showImage() {
         currentImageUri?.let {
             Log.d("Image URI", "showImage: $it")
             binding.previewImageView.setImageURI(it)
-        }
-    }
-
-    private fun uploadImage() {
-        currentImageUri?.let { uri ->
-            val imageFile = uriToFile(uri, requireContext()).reduceFileImage()
-            scanViewModel.scanViewModel(imageFile)
-        } ?: Toast.makeText(requireContext(), "Pilih atau ambil gambar terlebih dahulu", Toast.LENGTH_SHORT).show()
-    }
-
-    private fun setupViewModelObservers() {
-        scanViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
-            binding.progressIndicator.visibility = if (isLoading) View.VISIBLE else View.GONE
-        }
-
-        scanViewModel.errorMessage.observe(viewLifecycleOwner) { message ->
-            message?.let { showToast(it) }
-        }
-
-        scanViewModel.successMessage.observe(viewLifecycleOwner) { message ->
-            message?.let { showToast(it) }
-        }
-
-        scanViewModel.navigateHomeMain.observe(viewLifecycleOwner) { navigate ->
-            if (navigate) {
-                Toast.makeText(requireContext(), "Navigasi ke Home", Toast.LENGTH_SHORT).show()
-            }
         }
     }
 

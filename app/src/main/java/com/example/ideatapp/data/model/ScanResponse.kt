@@ -2,6 +2,7 @@ package com.example.ideatapp.data.model
 
 import com.google.gson.annotations.SerializedName
 
+
 data class ScanResponse(
 
 	@field:SerializedName("ScanData")

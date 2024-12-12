@@ -31,6 +31,7 @@ class LoginActivity : AppCompatActivity() {
         val emailInputLayout = binding.emailInputLayout
         val passwordInputLayout = binding.passwordInputLayout
         val loginButton = binding.loginButton
+        val registerTextIntent = binding.registerTextIntent
 
         loginButton.setOnClickListener {
             val email = emailInputLayout.editText?.text.toString().trim()
@@ -54,6 +55,11 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+
+        registerTextIntent.setOnClickListener {
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
     }
 

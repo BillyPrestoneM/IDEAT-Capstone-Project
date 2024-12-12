@@ -6,4 +6,30 @@
     <color name="merah1">#BA1A1A</color>
     <color name="grey">#D9D9D9</color>
     <color name="grey1">#6A5E5E</color>
+
+    <color name="primary">#006E0A</color>
+    <color name="secondary">#45673E</color>
+    <color name="tertiary">#005E06</color>
+    <color name="error">#BA1A1A</color>
+    <color name="errorcontainer">#FFDAD6</color>
+    <color name="tertiarycontainer">#00880E</color>
+    <color name="secondarycontainer">#82A779</color>
+    <color name="primarycontainer">#41D93D</color>
+    <color name="surfacedim">#D3DDCC</color>
+    <color name="surface">#F3FCEB</color>
+    <color name="surfacebright">#F3FCEB</color>
+    <color name="inversesurface">#2A3327</color>
+
+    <color name="primarydark">#5CF153</color>
+    <color name="secondarydark">#ABD1A0</color>
+    <color name="tertiarydark">#69DF5C</color>
+    <color name="errordark">#FFB4AB</color>
+    <color name="errorcontainerdark">#93000A</color>
+    <color name="tertiarycontainerdark">#00820D</color>
+    <color name="secondarycontainerdark">#5B7D53</color>
+    <color name="primarycontainerdark">#26C52A</color>
+    <color name="surfacedimdark">#0E150B</color>
+    <color name="surfacedark">#0E150B</color>
+    <color name="surfacebrightdark">#333C30</color>
+    <color name="inversesurfacedark">#DCE6D4</color>
 </resources>
