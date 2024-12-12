@@ -88,14 +88,19 @@ class ScannerFragment : Fragment() {
                 is ResultUtil.Success -> {
                     binding.progressIndicator.visibility = View.GONE
                     showToast("Scan berhasil: ${result.data.message}")
-                    val intent = Intent(requireContext(), RiwayatActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().finish()
                 }
                 is ResultUtil.Error -> {
                     binding.progressIndicator.visibility = View.GONE
                     showToast("Error: ${result.message}")
                 }
+            }
+        }
+
+        scanViewModel.navigateToRiwayat.observe(viewLifecycleOwner) { navigate ->
+            if (navigate) {
+                val intent = Intent(requireContext(), RiwayatActivity::class.java)
+                startActivity(intent)
+                scanViewModel.setNavigateToRiwayat(false)
             }
         }
     }
